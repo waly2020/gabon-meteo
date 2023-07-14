@@ -4,10 +4,10 @@
     box-sizing: border-box;
     font-family: sans-serif;
 }
-#meteo{
-    position: relative;
-    width: 100%;
-    min-height: 300px;
+/* #meteo{ */
+    /* position: relative; */
+    /* width: 100%; */
+    /* min-height: 300px; */
     /* display: flex; */
     /* flex-flow: row; */
     /* overflow-x: scroll; */
@@ -16,7 +16,7 @@
     /* scrollbar-width: 0; */
     /* scrollbar-color: red; */
     /* padding: 8px 5px; */
-}
+/* } */
 /* #meteo::-webkit-scrollbar{
     color: rgba(255, 0, 0, 0);
     width: 0px;
