@@ -19,4 +19,26 @@ btns.forEach(btn =>{
 
     })
 })
+
+// btnM.addEventListener("click",() =>{
+//     view.scrollLeft -= 300;
+// })
+const btnSlider = document.querySelectorAll("button.slider");
+const item = document.querySelector("items");
+// const {width} = item.getBoundingClientRect();
+btnSlider.forEach(btn =>{
+    btn.addEventListener("click",() =>{
+        // alert("hello")
+        if(btn.classList.contains("plus")){
+            sectionMeteo.scrollLeft += 400;
+            // alert("hello plus")
+        }else{
+            sectionMeteo.scrollLeft -= 400;
+            // alert("hello moins")
+        }
+    })
+})
+// console.log(btnSlider)
+// console.log(btnSlider);
+
 }
