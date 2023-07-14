@@ -6,12 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App meteo</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./splide/splide.min.css">
+    <script src="./splide/splide.min.js"></script>
 </head>
 
 <body>
-    <section id="meteo">
-        <div class="loader">
-            <div class="animation"></div>
+    <!-- 
+        <div class="splide">
+        <div class="splide__track">
+            <div class="splide__list view">
+                <div class="splide__slide">slide 1</div>
+                <div class="splide__slide">slide 2</div>
+                <div class="splide__slide">slide 3</div>
+                <div class="splide__slide">slide 4</div>
+            </div>
+        </div>
+    </div>
+     -->
+    <section class="splide">
+        <div class="splide__track">
+            <div class="splide__list" id="meteo">
+
+                <!-- <div class="splide__slide">slide 2</div>
+                <div class="splide__slide">slide 3</div>
+                <div class="splide__slide">slide 4</div> -->
+            </div>
         </div>
     </section>
     <script src="./api.js"></script>

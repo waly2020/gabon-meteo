@@ -4,7 +4,7 @@ let pages = [];
 let jour = ["Dim.", "Lun.", "Mar.", "Mer.", "Jeu.", "Ven.", "Sam."];
 let mois = ["Jan.", "Fev.", "Mar.", "Avr.", "Mai.", "Juin", "Juil.", "Aou.", "Sep.", "Oct.", "Nov.", "Dec."];
 let journee = ["Matin", "Apres-midi", "Soir", "Nuit"];
-
+let canSlide = false;
 let loader = true;
 
 const key = "7dff8c59c3153f57f1c78397f6c66e3a";
@@ -18,13 +18,14 @@ for (let i = 0; i < villes.length; i++) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${ville}&lang=fr&units=metric&appid=${key}`).then(res => {
         if (res.ok) {
             res.json().then(currentData => {
+                
                 // console.log(ville,currentData.dt);
                 let d = new Date(currentData.dt * 1000);
                 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${ville},GA&lang=fr&units=metric&appid=${key}`).then(resHistorie => {
                     if (resHistorie.ok) {
-                        if(i >= villes.length - 8){
-                            document.querySelector(".loader").classList.add("active");
-                        }
+                        // if(i >= villes.length - 8){
+                        //     document.querySelector(".loader").classList.add("active");
+                        // }
                         resHistorie.json().then(historie => {
                             const heurs = () => {
                                 let dts = "";
@@ -76,7 +77,7 @@ for (let i = 0; i < villes.length; i++) {
                                 return dts;
                             }
                             sectionMeteo.innerHTML += `
-                        <div class="items">
+                        <div class="items splide__slide">
             <div class="heade-item-meteo">
                 <img src="https://meteo-app-gabon.netlify.app/backItem.jpg" alt="design" class="back-img">
                 <div class="head-item-meteo-content">
@@ -124,6 +125,7 @@ for (let i = 0; i < villes.length; i++) {
                             btns = document.querySelectorAll(".onglet > button");
                             pages = document.querySelectorAll(".datas-temps");
                             addDinamique();
+                            
                         })
                     } else {
                         console.log(resHistorie.status);
@@ -135,9 +137,34 @@ for (let i = 0; i < villes.length; i++) {
         } else {
             console.log(res);
         }
+        if(i >= 25){
+            canSlide = true;
+        }
     }).catch(err => {
         console.log(ville, " n'as pas pue etre trouver");
     })
 
+    // if(i == ville.length - 2){
+    //     splide.mount();
+    //     console.log("Tu peut scroll");
+    //   }
     
 }
+
+function verify(){
+    // console.log("hello");
+    if(canSlide){
+        var splide = new Splide(".splide", {
+            type: 'loop',
+            perPage: screen.width < 600 ? 1 : 3,
+            perMove: 1,
+        });
+        splide.mount();
+        console.log("scroll");
+    }
+    if(!canSlide){
+        // console.log("faux");
+        setTimeout("verify()",3000);
+    }
+}
+verify();

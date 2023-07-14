@@ -8,19 +8,19 @@
     position: relative;
     width: 100%;
     min-height: 300px;
-    display: flex;
-    flex-flow: row;
-    overflow-x: scroll;
-    align-items: flex-start;
-    gap: 5px;
-    scrollbar-width: 0;
-    scrollbar-color: red;
-    padding: 8px 5px;
+    /* display: flex; */
+    /* flex-flow: row; */
+    /* overflow-x: scroll; */
+    /* align-items: flex-start; */
+    /* gap: 5px; */
+    /* scrollbar-width: 0; */
+    /* scrollbar-color: red; */
+    /* padding: 8px 5px; */
 }
-#meteo::-webkit-scrollbar{
+/* #meteo::-webkit-scrollbar{
     color: rgba(255, 0, 0, 0);
     width: 0px;
-}
+} */
 .loader{
     position: absolute;
     width: 97vw;
@@ -31,6 +31,7 @@
     align-items: center;
     transition: opacity 2s;
     z-index: 18;
+    display: none;
     /* flex-shrink: 0; */
 }
 .loader.active{
@@ -62,11 +63,12 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
-    width: 96vw;
-    max-width: 400px;
+    /* width: 96vw; */
+    /* max-width: 400px; */
     /* flex-basis: 400px; */
+    width: 400px;
     padding: 10px 8px;
-    flex-shrink: 0;
+    /* flex-shrink: 0; */
 }
 .heade-item-meteo{
     position: relative;
