@@ -20,7 +20,7 @@
     color: rgba(255, 0, 0, 0);
     width: 0px;
 }
-.loader{
+.loader-meteo{
     position: absolute;
     width: calc(100vw - 10px);
     height: 100%;
@@ -28,25 +28,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* transition: opacity 2s; */
     z-index: 18;
-    /* opacity: 0; */
-    /* flex-shrink: 0; */
 }
-.loader.active{
+.loader-meteo.active{
     opacity: 0;
     width: 0;
     left: 0;
     transition: opacity 2s;
 }
-.animation{
+.animation-loader-meteo{
     position: relative;
     width: 200px;
     height: 3px;
     border: solid 1px #fff;
     overflow: hidden;
 }
-.animation::after{
+.animation-loader-meteo::after{
     content: "";
     position: absolute;
     left: 0;
@@ -55,7 +52,7 @@
     height: 100%;
     background: #FFF;
     transform: translateX(-100%);
-    animation: loaderBar 2s ease-in infinite;
+    animation: loader-meteoBar 2s ease-in infinite;
 }
 
 .items{
@@ -64,7 +61,6 @@
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.24);
     width: 96vw;
     max-width: 400px;
-    /* flex-basis: 400px; */
     padding: 10px 8px;
     flex-shrink: 0;
 }
@@ -101,7 +97,7 @@
     align-items: center;
 }
 .head-item-meteo-img p{
-    font-size: 13px;
+    font-size: 13px !important;
 }
 .head-item-meteo-img h2{
     font-size: 40px;
@@ -116,12 +112,14 @@
     object-fit: cover;
     z-index: 1;
 }
-.head-item-meteo-texte h2{
+.head-item-meteo-texte .titre-head-meteo{
     font-size: 1.3em;
+    color: #fff !important;
 }
-.head-item-meteo-texte h3{
+.head-item-meteo-texte .sous-titre-head-meteo{
     font-size: 13px;
     margin-top: 10px;
+    color: #fff !important;
 }
 .onglet{
     width: 100%;
@@ -132,7 +130,7 @@
     margin-top: 20px;
     padding: 3px 0;
 }
-.onglet button{
+.onglet .btn-onglet{
     padding: 6px 0;
     font-size: 12px;
     border-radius: 20px;
@@ -142,7 +140,7 @@
     box-shadow: 0 0 4px 2px rgba(32, 32, 32, 0.059) inset;
     
 }
-.onglet button.active{
+.onglet .btn-onglet.active{
     color: #fff;
     background: #c92807;
     font-weight: bold;
@@ -161,7 +159,7 @@
     grid-template-columns: repeat(5,1fr);
 }
 .quotidien-tmp{
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(4,1fr);
 }
 .data-tmp{
     display: flex;
@@ -179,7 +177,7 @@
     color: #aaa;
 }
 .degre-tmp{
-    font-size: 26px;
+    font-size: 23px;
     font-weight: bold;
     color: #c92807;
     margin-top: 10px;
@@ -188,10 +186,11 @@
     width: 40px;
 }
 .sous-degre{
-    font-size: 13px;
+    font-size: 11px;
     color: #888;
     margin: 5px 0;
     text-align: center;
+    word-break: break-all;
 }
 .quotidien-tmp .titre-data{
     font-size: 11px;
@@ -220,7 +219,7 @@ button.slider{
     align-items: center;
     gap: 30px;
 }
-@keyframes loaderBar{
+@keyframes loader-meteoBar{
     from{
         transform: translateX(-100%);
     }to{

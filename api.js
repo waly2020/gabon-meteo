@@ -23,7 +23,7 @@ for (let i = 0; i < villes.length; i++) {
                 fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${ville},GA&lang=fr&units=metric&appid=${key}`).then(resHistorie => {
                     if (resHistorie.ok) {
                         if(i >= villes.length - 8){
-                            document.querySelector(".loader").classList.add("active");
+                            document.querySelector(".loader-meteo").classList.add("active");
                         }
                         resHistorie.json().then(historie => {
                             const heurs = () => {
@@ -33,7 +33,7 @@ for (let i = 0; i < villes.length; i++) {
                                     let dtt = new Date(heur.dt * 1000);
                                     dts += `
                                     <div class="data-tmp">
-                                       <p class="titre-data">${dtt.getHours() < 10 ? "0" + dtt.getHours() : dtt.getHours()}h : ${dtt.getMinutes() < 10 ? "0" + dtt.getMinutes() : dtt.getMinutes()}m</p>
+                                       <p class="titre-data">${dtt.getHours() < 10 ? "0" + dtt.getHours() : dtt.getHours()}h : ${dtt.getMinutes() < 10 ? "0" + dtt.getMinutes() : dtt.getMinutes()}</p>
                                        <p class="degre-tmp">${Math.floor(heur.main.temp)}°</p>
                                        <img src="https://openweathermap.org/img/w/${heur.weather[0].icon}.png" alt="temperature" class="data-tmp-img">
                                     </div>
@@ -43,7 +43,8 @@ for (let i = 0; i < villes.length; i++) {
                             }
                             const jours = () => {
                                 let dts = "";
-                                for (let i = 0; i < 36; i += 8) {
+                                // let iDts = 0;
+                                for (let i = 0; i < 32; i += 8) {
                                     let jourHis = historie.list[i];
                                     let dtt = new Date(jourHis.dt * 1000);
                                     dts += `
@@ -81,8 +82,8 @@ for (let i = 0; i < villes.length; i++) {
                 <img src="https://meteo-app-gabon.netlify.app/backItem.jpg" alt="design" class="back-img">
                 <div class="head-item-meteo-content">
                     <div class="head-item-meteo-texte">
-                        <h2>${currentData.name}</h2>
-                        <h3>${jour[d.getDay()]} ${d.getDate()} ${mois[d.getMonth()]} ${d.getFullYear()}</h3>
+                        <h2 class='titre-head-meteo'>${currentData.name}</h2>
+                        <h3 class='sous-titre-head-meteo'>${jour[d.getDay()]} ${d.getDate()} ${mois[d.getMonth()]} ${d.getFullYear()}</h3>
                     </div>
                     <div class="head-item-meteo-img">
                         <div class="head-temp">
@@ -95,9 +96,9 @@ for (let i = 0; i < villes.length; i++) {
             </div>
 
             <div class="onglet">
-                <button data-item="${i}" data-active="1" class="active">Aujourd'hui</button>
-                <button data-item="${i}" data-active="2">Par heure</button>
-                <button data-item="${i}" data-active="3">Quotidien</button>
+                <button data-item="${i}" data-active="1" class="btn-onglet active">Aujourd'hui</button>
+                <button data-item="${i}" data-active="2" class="btn-onglet">Par heure</button>
+                <button data-item="${i}" data-active="3" class="btn-onglet">Quotidien</button>
             </div>
             <!--  -->
             <div data-item="${i}" data-active="1" class="maintenant datas-temps active">
